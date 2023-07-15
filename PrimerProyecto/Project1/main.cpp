@@ -1,12 +1,14 @@
 #include <iostream>
 #include <string>
 
+//Ejercicio con linked list simples
+
 using namespace std;
 
 
 struct Nodo{
-	int dato;
-	Nodo * nodoSiguiente;
+	int dato; //dato entero
+	Nodo * nodoSiguiente; //puntero al siguiente nodo
 };
 
 Nodo* primero = NULL;
@@ -52,14 +54,14 @@ void insertaNodoEnPosicion(int valor, int pos)
 	Nodo* nuevo = new Nodo();
 	nuevo->dato = valor;
 	int cont = 0;
-	Nodo* p = primero; //nodo que va a iterar
-	while (cont < pos - 1 && p != NULL) {
-		p = p->nodoSiguiente;
+	Nodo* it = primero; //nodo que va a iterar
+	while (cont < pos - 1 && it != NULL) {
+		it = it->nodoSiguiente;
 		cont++;
 	}
-	if (p != NULL) {
-		Nodo* aux = p->nodoSiguiente;
-		p->nodoSiguiente = nuevo;
+	if (it != NULL) {
+		Nodo* aux = it->nodoSiguiente;
+		it->nodoSiguiente = nuevo;
 		nuevo->nodoSiguiente = aux;
 	}
 }
@@ -82,6 +84,8 @@ int main() {
 	insertaNodoAlPrincipio(57);
 	insertaNodoAlPrincipio(1);
 	insertaNodoEnPosicion(4000, 3);
+	insertaNodoEnPosicion(5, 1);
+	insertaNodoAlFinal(10);
 
 	mostrarNodos();
 	return 0;
