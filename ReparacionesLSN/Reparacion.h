@@ -22,7 +22,7 @@ struct tTecnico
 
  struct tReparacion
 {
- 	string idReparacion;
+ 	long int idReparacion;
 	tTecnico tecnicoAsociado;
 	tMovil movilAsociado;
 	float precioPieza;

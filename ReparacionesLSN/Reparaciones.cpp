@@ -55,7 +55,7 @@ void agregarReparacion(tListaReparaciones& listaReparaciones)
             cout << "4. Introducir modelo del dispositivo" << endl;
             cout << "5. Introducir nombre del técnico asignado" << endl;
             cout << "6. Guardar reparación y salir" << endl;
-            cout << "Seleccione una opción (1-7): ";
+            cout << "Seleccione una opción (1-6): ";
             cin >> opcion;
             switch (opcion) {
             case 1:
@@ -111,9 +111,11 @@ void agregarReparacion(tListaReparaciones& listaReparaciones)
                 break;
             case 6:
                 if (!listaReparaciones.empty()) { // Verificamos si el vector no está vacío
+                    nuevaReparacion.idReparacion = listaReparaciones.size() + 1;
                     listaReparaciones.push_back(nuevaReparacion); // Agregamos el nuevo elemento al final del vector
                 }
                 else {
+                    nuevaReparacion.idReparacion = listaReparaciones.size() + 1;
                     listaReparaciones.push_back(nuevaReparacion); // Agregamos el nuevo elemento al final del vector
                 }
                 break;
@@ -121,7 +123,7 @@ void agregarReparacion(tListaReparaciones& listaReparaciones)
                 cout << "Opción inválida. Seleccione una opción válida (1-7)." << endl;
                 break;
             }
-        } while (opcion != 7); // Repetimos el bucle mientras no se seleccione la opción 7
+        } while (opcion != 6); // Repetimos el bucle mientras no se seleccione la opción 7
         cout << "Reparación guardada. Saliendo del menú." << endl;
     }
     else
@@ -130,6 +132,18 @@ void agregarReparacion(tListaReparaciones& listaReparaciones)
     }
 }
 
+
+void muestraTodasReparaciones(const tListaReparaciones l)
+{
+    int i = 0;
+    cout << "Lista Reparaciones: \n";
+	while(i < l.size())
+	{
+        cout << "Id de reparacion: " << l[i].idReparacion << endl;
+        cout << "Tecnico asociado a la reparacion: " << l[i].tecnicoAsociado.nombre;
+        i++;
+	}
+}
 
 
 // Función para cargar la información de los técnicos desde un archivo de texto
@@ -189,7 +203,7 @@ void menu(tListaReparaciones &l, const tListaTecnicos t)
             //asignar_tecnico(lista_reparaciones);
             break;
         case 3:
-            //mostrar_reparaciones(lista_reparaciones);
+            muestraTodasReparaciones(l);
             break;
         case 4:
             mostrarTecnicos(t);
