@@ -1,0 +1,3 @@
+Sandy 0 1
+Nestor 0 1
+Luis 0 1
