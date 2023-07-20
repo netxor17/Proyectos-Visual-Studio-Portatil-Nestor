@@ -18,17 +18,36 @@ void actualizaTecnicos(tListaTecnicos lista_tecnicos) {
     }
 }
 
-int buscaTecnico(const tListaTecnicos l, string nombre)
+int buscaTecnico(tListaTecnicos &l, string &nombre)
 {
     int i = 0;
-    while (i < l.size() && l[i].nombre != nombre)
+    int result = -1;
+    while (i < l.size())
     {
-        i++;
+    	if(l[i].nombre != nombre)
+    	{
+            i++;
+    	}
+        else
+        {
+            result = i;
+            return result;
+        }
     }
-    return i;
+    return result;
 }
 
-void agregarReparacion(tListaReparaciones& listaReparaciones)
+void asignaReparacion(tReparacion &r, tTecnico &t)
+{
+	if(!t.reparaciones.empty())
+	{
+        t.reparaciones.push_back(r);
+	}else
+	{
+        t.reparaciones.push_back(r);
+	}
+}
+void agregarReparacion(tListaReparaciones &listaReparaciones, tListaTecnicos &tecnicos)
 {
     cout << "Vas a anadir una nueva reparacion a la lista \n";
     cout << "Estas segur@ de que quieres anadir una nueva reparacion? \n";
@@ -40,7 +59,7 @@ void agregarReparacion(tListaReparaciones& listaReparaciones)
     string modeloDispositivo;
     string nombreTecnico;
     tReparacion nuevaReparacion;
-    tListaTecnicos tecnicos;
+    int indexTecnico;
 
 
     cin >> c;
@@ -101,22 +120,29 @@ void agregarReparacion(tListaReparaciones& listaReparaciones)
             case 5:
                 cout << "Introduzca el nombre del técnico asignado: ";
                 getline(cin >> ws, nombreTecnico);
-                if (!listaReparaciones.empty()) { // Verificamos si el vector no está vacío
-                    int indexTecnico = buscaTecnico(tecnicos, nombreTecnico);
-                    listaReparaciones.back().tecnicoAsociado = tecnicos[indexTecnico];
-                }
-                else {
-                    nuevaReparacion.tecnicoAsociado.nombre = nombreTecnico; // Inicializamos el nuevo elemento si el vector está vacío
+                indexTecnico = buscaTecnico(tecnicos, nombreTecnico);
+                if (indexTecnico == -1)  break;
+                else
+                {
+
+                    if (!listaReparaciones.empty()) { // Verificamos si el vector no está vacío
+                        listaReparaciones.back().tecnicoAsociado = tecnicos[indexTecnico];
+                    }
+                    else {
+                        nuevaReparacion.tecnicoAsociado.nombre = nombreTecnico; // Inicializamos el nuevo elemento si el vector está vacío
+                    }
                 }
                 break;
             case 6:
                 if (!listaReparaciones.empty()) { // Verificamos si el vector no está vacío
                     nuevaReparacion.idReparacion = listaReparaciones.size() + 1;
                     listaReparaciones.push_back(nuevaReparacion); // Agregamos el nuevo elemento al final del vector
+                    asignaReparacion(nuevaReparacion, nuevaReparacion.tecnicoAsociado);
                 }
                 else {
                     nuevaReparacion.idReparacion = listaReparaciones.size() + 1;
                     listaReparaciones.push_back(nuevaReparacion); // Agregamos el nuevo elemento al final del vector
+                    asignaReparacion(nuevaReparacion, nuevaReparacion.tecnicoAsociado);
                 }
                 break;
             default:
@@ -132,8 +158,32 @@ void agregarReparacion(tListaReparaciones& listaReparaciones)
     }
 }
 
+void muestraReparacionesTecnico( tListaTecnicos &t, string &nombre)
+{
+    int index = buscaTecnico(t, nombre);
+    if(index == -1)
+    {
+        cout << "El tecnico introducido no existe, prueba otra vez...\n";
+    }
+    else
+    {
+        if (!t[index].reparaciones.empty())
+        {
+            for (int i = 0; i < t[index].reparaciones.size(); i++)
+            {
+                cout << "Id de reparacion: " << t[index].reparaciones[i].idReparacion << endl;
+                cout << " Fallo del telefono: " << t[index].reparaciones[i].movilAsociado.fallo << endl;
+            }
+        }
+        else
+        {
+            cout << "Este tecnico no tiene reparaciones en su historial.." << endl;
+        }
+    }
+}
 
-void muestraTodasReparaciones(const tListaReparaciones l)
+
+void muestraTodasReparaciones(const tListaReparaciones &l)
 {
     int i = 0;
     cout << "Lista Reparaciones: \n";
@@ -167,7 +217,7 @@ tListaTecnicos cargaTecnicos() {
 }
 
 // Función para mostrar los datos de los técnicos
-void mostrarTecnicos(tListaTecnicos lista_tecnicos) {
+void mostrarTecnicos(const tListaTecnicos &lista_tecnicos) {
     cout << "Lista de tecnicos:" << endl;
     for (int i = 0; i < lista_tecnicos.size(); i++) {
         cout << "Nombre: " << lista_tecnicos[i].nombre << endl;
@@ -182,22 +232,24 @@ void mostrarTecnicos(tListaTecnicos lista_tecnicos) {
     }
 }
 
-void menu(tListaReparaciones &l, const tListaTecnicos t)
+void menu(tListaReparaciones &l, tListaTecnicos &t)
 {
-	int opc;
+    int opc, indexTecnico;
+    string nombreTecnico;
     do {
         cout << "\n Menu de opciones:" << endl;
         cout << "\n1. Agregar una reparacion" << endl;
         cout << "\n2. Asignar una reparacion a un tecnico" << endl;
         cout << "\n3. Mostrar la lista de reparaciones" << endl;
         cout << "\n4. Mostrar la lista de tecnicos" << endl;
-        cout << "\n5. Salir" << endl <<endl;
+        cout << "\n5. Mostrar las reparaciones de un tecnico en concreto" << endl;
+        cout << "\n6. Salir" << endl <<endl;
         cout << "\nIngrese su opcion: ";
         cin >> opc;
         cin.ignore(); // Ignoramos el salto de línea
         switch (opc) {
         case 1:
-            agregarReparacion(l);
+            agregarReparacion(l,t);
             break;
         case 2:
             //asignar_tecnico(lista_reparaciones);
@@ -209,13 +261,18 @@ void menu(tListaReparaciones &l, const tListaTecnicos t)
             mostrarTecnicos(t);
             break;
         case 5:
+            cout << "Que tecnico quieres ver? " << endl;
+            cin >> nombreTecnico;
+            muestraReparacionesTecnico(t,nombreTecnico);
+            break;
+        case 6:
             cout << "Gracias por utilizar el programa." << endl;
             break;
         default:
             cout << "Opcion invalida." << endl;
             break;
         }
-    } while (opc != 4);
+    } while (opc != 6);
 }
 
 

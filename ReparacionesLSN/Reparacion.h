@@ -4,13 +4,21 @@
 #include <string>
 #include <vector>
 
+struct tReparacion;
+struct tTecnico;
+
 using namespace std;
+
+typedef vector<tReparacion> tListaReparaciones; //vector de reparaciones
+
+typedef vector<tTecnico> tListaTecnicos; // lista de tecnicos (3)
 
 struct tTecnico
 {
 	std::string nombre;
 	int numReparaciones = 0;
 	bool reparaAhora = false;
+	tListaReparaciones reparaciones;
 };
 
  struct tMovil
@@ -31,9 +39,9 @@ struct tTecnico
 };
 
 
-typedef vector<tReparacion> tListaReparaciones; //vector de reparaciones
 
-typedef vector<tTecnico> tListaTecnicos; // lista de tecnicos (3)
+
+
 
 
 
