@@ -4,7 +4,7 @@
 #include "Reparacion.h"
 
 // Función para guardar la información actualizada de los técnicos en un archivo de texto
-void actualizaTecnicos(tListaTecnicos lista_tecnicos) {
+void actualizaTecnicos(tListaTecnicos &lista_tecnicos) {
     ofstream archivo("tecnicos.txt");
     if (!archivo.is_open()) {
         cout << "Error al abrir el archivo de técnicos." << endl;
@@ -282,6 +282,7 @@ int main()
     tListaTecnicos tecnicos = cargaTecnicos();
 
     menu(listaReparaciones, tecnicos);
+    actualizaTecnicos(tecnicos);
 	system("pause");
 	return 0;
 }

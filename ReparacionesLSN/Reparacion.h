@@ -15,10 +15,10 @@ typedef vector<tTecnico> tListaTecnicos; // lista de tecnicos (3)
 
 struct tTecnico
 {
-	std::string nombre;
+	string nombre;
 	int numReparaciones = 0;
 	bool reparaAhora = false;
-	tListaReparaciones reparaciones;
+	tListaReparaciones reparaciones; //lista de reparaciones del tecnico
 };
 
  struct tMovil
