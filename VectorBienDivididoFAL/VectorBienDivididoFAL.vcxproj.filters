@@ -15,17 +15,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Reparacion.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
+    <Text Include="datos.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Reparaciones.cpp">
+    <ClCompile Include="Source.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="tecnicos.txt" />
-    <Text Include="reparaciones.txt" />
   </ItemGroup>
 </Project>

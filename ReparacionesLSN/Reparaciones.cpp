@@ -18,7 +18,44 @@ void actualizaTecnicos(tListaTecnicos &lista_tecnicos) {
     }
 }
 
-int buscaTecnico(tListaTecnicos &l, string &nombre)
+
+// Función para guardar la información actualizada de los técnicos en un archivo de texto
+void actualizaReparaciones(tListaReparaciones& lista_reparaciones) {
+    ofstream archivo("reparaciones.txt");
+    if (!archivo.is_open()) {
+        cout << "Error al abrir el archivo de técnicos." << endl;
+    }
+    else {
+        for (int i = 0; i < lista_reparaciones.size(); i++) {
+            archivo << lista_reparaciones[i].idReparacion << " " << lista_reparaciones[i].movilAsociado.IMEI <<  " " << lista_reparaciones[i].tecnicoAsociado.nombre << endl;
+        }
+        archivo.close();
+        cout << "La información de las reparaciones ha sido guardada correctamente." << endl;
+    }
+}
+
+// Función para cargar la información de los técnicos desde un archivo de texto
+tListaReparaciones cargaReparaciones() {
+    tListaReparaciones lista_reparaciones;
+    ifstream archivo("reparaciones.txt");
+    if (!archivo.is_open()) {
+        cout << "Error al abrir el archivo de reparaciones." << endl;
+    }
+    else {
+        long int idReparacion;
+        string tecnicoAsociado;
+        string imei;
+
+        while (archivo >>  idReparacion >> imei >>  tecnicoAsociado) {
+            tReparacion reparacion = { idReparacion,{tecnicoAsociado}, {imei} };
+            lista_reparaciones.push_back(reparacion);
+        }
+        archivo.close();
+    }
+    return lista_reparaciones;
+}
+
+int buscaTecnico(tListaTecnicos l, string nombre)
 {
     int i = 0;
     int result = -1;
@@ -42,9 +79,11 @@ void asignaReparacion(tReparacion &r, tTecnico &t)
 	if(!t.reparaciones.empty())
 	{
         t.reparaciones.push_back(r);
+        t.numReparaciones++;
 	}else
 	{
         t.reparaciones.push_back(r);
+        t.numReparaciones++;
 	}
 }
 void agregarReparacion(tListaReparaciones &listaReparaciones, tListaTecnicos &tecnicos)
@@ -158,7 +197,7 @@ void agregarReparacion(tListaReparaciones &listaReparaciones, tListaTecnicos &te
     }
 }
 
-void muestraReparacionesTecnico( tListaTecnicos &t, string &nombre)
+void muestraReparacionesTecnico( tListaTecnicos t, string nombre)
 {
     int index = buscaTecnico(t, nombre);
     if(index == -1)
@@ -183,14 +222,15 @@ void muestraReparacionesTecnico( tListaTecnicos &t, string &nombre)
 }
 
 
-void muestraTodasReparaciones(const tListaReparaciones &l)
+void muestraTodasReparaciones(const tListaReparaciones l)
 {
     int i = 0;
     cout << "Lista Reparaciones: \n";
 	while(i < l.size())
 	{
         cout << "Id de reparacion: " << l[i].idReparacion << endl;
-        cout << "Tecnico asociado a la reparacion: " << l[i].tecnicoAsociado.nombre;
+        cout << "IMEI del telefono: " << l[i].movilAsociado.IMEI << endl;
+        cout << "Tecnico asociado a la reparacion: " << l[i].tecnicoAsociado.nombre << endl;;
         i++;
 	}
 }
@@ -278,11 +318,12 @@ void menu(tListaReparaciones &l, tListaTecnicos &t)
 
 int main()
 {
-	tListaReparaciones listaReparaciones;
+	tListaReparaciones listaReparaciones = cargaReparaciones();
     tListaTecnicos tecnicos = cargaTecnicos();
 
     menu(listaReparaciones, tecnicos);
     actualizaTecnicos(tecnicos);
+    actualizaReparaciones(listaReparaciones);
 	system("pause");
 	return 0;
 }
