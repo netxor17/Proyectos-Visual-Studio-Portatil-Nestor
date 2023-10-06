@@ -1,5 +1,5 @@
-﻿// Nombre del alumno .....
-// Usuario del Juez ......
+﻿// Nestor Marin Gomez    .....
+// A79 ......
 
 
 #include <iostream>
@@ -12,54 +12,43 @@ using namespace std;
 
 
 // función que resuelve el problema
-void resolver(vector<long long int>  &datos, const int erroneo) {
-    int i = 0;
-    int cont = 0;
-    while (i < datos.size())
-    {
-        if (datos[i] != erroneo)
-        {
-            datos[cont] = datos[i];
-            ++cont;
-        }
-        ++i;
-    }
-    datos.resize(cont);
+pair<bool,int> resolver(const vector<int> &v) {
+
+    bool ok = false;
+    int suma = 0;
+    int index = -1;
+    int ref = 0;
+
+    for()
+
+    return { ok, index };
 }
+
 
 // Resuelve un caso de prueba, leyendo de la entrada la
 // configuración, y escribiendo la respuesta
 void resuelveCaso() {
     // leer los datos de la entrada
-    int numElem;
-	long long int valorErroneo;
-    cin >> numElem >> valorErroneo;
+    int nElems;
+    cin >> nElems;
 
-    vector<long long int> v(numElem);
+    vector<int> v(nElems);
 
-    for(int i =0; i < numElem; ++i)
+    for (int i = 0; i < nElems; ++i)
     {
         cin >> v[i];
     }
 
-    // escribir sol
-    resolver(v, valorErroneo);
-    if (v.size() == 0) cout << "0" << endl;
-    else
+    pair<bool,int> sol = resolver(v);
+
+    if (sol.first == true)
     {
-        cout << v.size() << endl;
-        for (int i = 0; i < v.size(); ++i)
-        {
-            if(v[i] !=0)
-            {
-                cout << v[i] << " ";
-
-            }
-            else {}
-        }
+        cout << "Si " << sol.second;
     }
+    else cout << "No";
+    // escribir sol
 
-    cout << endl;
+
 }
 
 int main() {
