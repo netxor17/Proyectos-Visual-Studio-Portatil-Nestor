@@ -9,11 +9,21 @@
 /*
 Recurrencia de la funcion:
 
-T(n):   c1 si n <= 1;
+T(n):   c0 si n == 0
+        c1 si n = 1;
         T(n-1) + c2 si n>1
 
 Desplegado: 
 
+    Sustituyo el coste de T(n - i) por su valor para algunos valores de i ( i = 0,1,2,3))
+    T(n)= T(n-1) +c2 = T(n-2) +c2+c2.... Obtengo el termino general T(n -k) + k*c2
+    Para obtener T(0) debemos tener n - k = 0, por lo que n = k.
+    El termino general cuando desplegamos la recurrencia es T(0) + n*c2
+
+    El desplegado completo es: 
+    T(n) = T(n-1) +c2 = T(n-2) +c2+c2....T(n-k) + k*c2 = T(0) + n*c2 perteneciente a O(n).
+
+    El coste de l solucion es O(n), siendo n es el valor pasado por argumento, por lo que es lineal.
 */
 // función que resuelve el problema
 
