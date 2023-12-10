@@ -20,37 +20,33 @@ int contarApariciones(const vector<int>& v, int elemento, int inicio, int fin) {
     return count;
 }
 
-int mayoritarioRecurs(vector<int> const& v, int ini, int fin) {
+pair<int, int> mayoritarioRecurs(vector<int> const& v, int ini, int fin) {
     int n = fin - ini;
     if (ini >= fin) {//vector vacio
-        return 0;
+        return { 0,0 }; 
     }
     else if (ini + 1 == fin) {//vector 1 elemento
-        return v[ini];
+        return { v[ini] , 1 };// devuelve el elemento y la cantidad de veces que aparece
     }
     else {//caso recursivo
         int mitad = (ini + fin) / 2;
 
-        int mayoritarioIzq = mayoritarioRecurs(v, ini, mitad);
-        int mayoritarioDer = mayoritarioRecurs(v, mitad, fin);
+        auto mayoritarioIzq = mayoritarioRecurs(v, ini, mitad);//devuelve el numero mayoritario de la izquierda, y las veces que aparece
+        auto mayoritarioDer = mayoritarioRecurs(v, mitad, fin);//devuelve el numero mayoritario de la derecha, y las veces que aparece
 
-        int vecesIzq = contarApariciones(v, mayoritarioIzq, ini, fin);
-        int vecesDer = contarApariciones(v, mayoritarioDer, ini, fin);
+        int vecesIzq = contarApariciones(v, mayoritarioIzq.first, mitad, fin) + mayoritarioIzq.second; // mira la otra mitad
+        int vecesDer = contarApariciones(v, mayoritarioDer.first, ini, mitad) + mayoritarioDer.second; // mira la otra mitad
 
         if (vecesIzq > n / 2) {
-            return mayoritarioIzq;
+            return { mayoritarioIzq.first, vecesIzq };
         }
         else if (vecesDer > n / 2) {
-            return mayoritarioDer;
+            return { mayoritarioDer.first, vecesDer };
         }
         else {
-            return 0;
+            return { 0,0 };
         }
     }
-
-    //Se podria hacer una funcion que devuelva un par de enteros, para a la hora de llamar a la funcion que recorre el vector
-    //solo recorra la mitad de ese vector, ya sabiendo el numero de veces que aparecia ese elemento en la otra mitad.
-    //pero no me da tiempo
 }
 
 // Resuelve un caso de prueba, leyendo de la entrada la
@@ -65,13 +61,13 @@ void resuelveCaso() {
         v.push_back(n);
         cin >> n;
     }
-    int sol = mayoritarioRecurs(v,0,v.size());
+    auto sol = mayoritarioRecurs(v,0,v.size());
     // escribir sol
-    if (sol == 0) {
+    if (sol.second == 0) {
         cout << "NO\n";
     }
     else {
-        cout << sol << "\n";
+        cout << sol.first << "\n";
     }
 }
 
