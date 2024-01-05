@@ -9,7 +9,7 @@
 
 using namespace std;
 
-bool esValida(vector<int>& marcas, const int& k, const int& i) {
+bool esValida(vector<int>& marcas, const int &i) {
     if (marcas[i] > 1) {//el trabajo se ha asignado
         return false;
     }
@@ -17,16 +17,16 @@ bool esValida(vector<int>& marcas, const int& k, const int& i) {
 }
 // Ramas: el coste de cada trabajo
 // Altura: cada funcionario
-// 
+// Vector solucion: posiciones son los funcionarios, y los valores son el coste de las tareas
 // función que resuelve el problema
 void funcionariosVA(const vector<vector<int>>& tiempos, vector<int>& sol, int k, int& acum, int& total,vector<int> &marcas) {
-    for (int i = 0; i < tiempos.size(); ++i) {//recorro las ramas
+    for (int i = 0; i < tiempos.size(); ++i) {//recorro las ramas (cada tarea)
         sol[k] = i;
         //marco
         total += tiempos[k][i];
-        marcas[i]++;
+        marcas[i]++; //pongo a 1
         //he marcado
-        if (esValida(marcas, k, i)) {
+        if (esValida(marcas, i)) {
             if (k == tiempos.size() - 1) { //solucion final
                 if (total < acum) acum = total;
             }
