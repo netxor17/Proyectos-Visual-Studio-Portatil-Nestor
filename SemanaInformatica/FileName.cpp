@@ -44,9 +44,11 @@ struct Companero {
 
 int resuelve(PriorityQueue<Actividad>& a)  {
     PriorityQueue<Companero> compas;//cola de prioridad de compañeros
+
     int cont = 0;//contador de compañeros necesarios
+
     while (!a.empty()) {//hay actividades
-        Actividad act = a.top();//cojo la cima
+        Actividad act = a.top();//cojo la mas prioritaria
         a.pop();//la saco
         if (compas.empty() || compas.top().final > act.inicio) {//si no hay compi disponible
             cont++;//necesito otro
@@ -56,6 +58,7 @@ int resuelve(PriorityQueue<Actividad>& a)  {
         }
         compas.push({ act.fin });//lo meto en la actividad
     }
+
     return cont - 1;//me tengo que quitar a mi mismo
 }
 

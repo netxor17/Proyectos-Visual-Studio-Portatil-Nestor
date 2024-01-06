@@ -1,7 +1,7 @@
 
 /*@ <answer>
  *
- * Nombre y Apellidos: Néstor Marín Gomez DA42
+ * Nombre y Apellidos: Nï¿½stor Marï¿½n Gomez DA42
  *
  *@ </answer> */
 
@@ -14,22 +14,22 @@ using namespace std;
 
 /*@ <answer>
 
- Escribe aquí un comentario general sobre la solución, explicando cómo
- se resuelve el problema y cuál es el coste de la solución, en función
- del tamaño del problema.
+ Escribe aquï¿½ un comentario general sobre la soluciï¿½n, explicando cï¿½mo
+ se resuelve el problema y cuï¿½l es el coste de la soluciï¿½n, en funciï¿½n
+ del tamaï¿½o del problema.
 
  @ </answer> */
 
 
  // ================================================================
- // Escribe el código completo de tu solución aquí debajo
+ // Escribe el cï¿½digo completo de tu soluciï¿½n aquï¿½ debajo
  // ================================================================
  //@ <answer>
 
 class RedSocial {
 private:
     vector<int> gruposAmigos;//vector de grupos de amigos
-    vector<int> tamaños;//tamaños de los grupos
+    vector<int> tamanos;//tamaï¿½os de los grupos
     vector <bool> visitados;//vector de booleanos
 
     int dfs(Grafo const &g, int v, int nGrupo) {
@@ -45,19 +45,19 @@ private:
     }
 
 public: 
-    RedSocial(Grafo const& g) : visitados(g.V(), false), gruposAmigos(g.V(), -1), tamaños(g.V(), -1)
+    RedSocial(Grafo const& g) : visitados(g.V(), false), gruposAmigos(g.V(), -1), tamanos(g.V(), -1)
     {
         int nGrupo = 0;
         for (int i = 0; i < g.V(); ++i) {
             if (!visitados[i]) {
-                tamaños[nGrupo] = dfs(g, i, nGrupo);
+                tamanos[nGrupo] = dfs(g, i, nGrupo);
                 nGrupo++;
             }
         }
     }
 
     int amigosPersona(int persona) {
-        return tamaños[gruposAmigos[persona]];
+        return tamanos[gruposAmigos[persona]];
     }
 
 };
@@ -99,13 +99,13 @@ bool resuelveCaso() {
     cout << "\n";
     // resolver el caso posiblemente llamando a otras funciones
 
-    // escribir la solución
+    // escribir la soluciï¿½n
 
     return true;
 }
 
 //@ </answer>
-//  Lo que se escriba dejado de esta línea ya no forma parte de la solución.
+//  Lo que se escriba dejado de esta lï¿½nea ya no forma parte de la soluciï¿½n.
 
 int main() {
     // ajustes para que cin extraiga directamente de un fichero
