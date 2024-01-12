@@ -12,15 +12,15 @@ using namespace std;
 
 /*@ <answer>
 
- Escribe aquí un comentario general sobre la solución, explicando cómo
- se resuelve el problema y cuál es el coste de la solución, en función
- del tamaño del problema.
+ Escribe aquï¿½ un comentario general sobre la soluciï¿½n, explicando cï¿½mo
+ se resuelve el problema y cuï¿½l es el coste de la soluciï¿½n, en funciï¿½n
+ del tamaï¿½o del problema.
 
  @ </answer> */
 
 
  // ================================================================
- // Escribe el código completo de tu solución aquí debajo
+ // Escribe el cï¿½digo completo de tu soluciï¿½n aquï¿½ debajo
  // ================================================================
  //@ <answer>
 
@@ -47,7 +47,7 @@ bool resuelveCaso() {
     int id = 1, t;
     for (int i = 0; i < b; i++, id++) {
         cin >> t;
-        baterias.push({ t,id,t });//añado a la cola de prioridad
+        baterias.push({ t,id,t });//aï¿½ado a la cola de prioridad
     }
 
     int r;
@@ -70,12 +70,12 @@ bool resuelveCaso() {
 
         bateriaActual.vidaUtil -= z;//resto la vida util
 
-        if (bateriaActual.vidaUtil <= 0) {//si aun tiene carga
+        if (bateriaActual.vidaUtil <= 0) {//si no tiene carga
             if (!batReserva.empty()) {//si quedan baterias de reserva
                 Bateria nuevaBat = batReserva.top();//cojo el mas prioritario
                 batReserva.pop();//la quito
                 nuevaBat.final = bateriaActual.final + nuevaBat.vidaUtil;//actualizo
-                baterias.push(nuevaBat);//la añado a las baterias que se usan
+                baterias.push(nuevaBat);//la aï¿½ado a las baterias que se usan
             }
         }
         else {
@@ -85,8 +85,8 @@ bool resuelveCaso() {
     }
     // resolver el caso posiblemente llamando a otras funciones
 
-    // escribir la solución
-     // escribir la solución
+    // escribir la soluciï¿½n
+     // escribir la soluciï¿½n
     if (baterias.empty()) cout << "ABANDONEN INMEDIATAMENTE LA BASE";
     else if (baterias.size() < b) cout << "FALLO EN EL SISTEMA";
     else cout << "CORRECTO";
@@ -101,7 +101,7 @@ bool resuelveCaso() {
 }
 
 //@ </answer>
-//  Lo que se escriba dejado de esta línea ya no forma parte de la solución.
+//  Lo que se escriba dejado de esta lï¿½nea ya no forma parte de la soluciï¿½n.
 
 int main() {
     // ajustes para que cin extraiga directamente de un fichero

@@ -17,7 +17,7 @@ using namespace std;
 tirar(i,j) formas de conseguir sumar la cantidad j tirando un dado de i caras.
 
 casos base :
-    Conseguir la cantidad j con cara de valor 0
+    Conseguir la cantidad j con caras de valor 0
     tirar(0,j) = 0;
 
     Conseguir un 0 con caras de valor i
@@ -25,6 +25,9 @@ casos base :
 
 caso recursivo
     tirar(i,j) = tirar(i-1, j) + tirar ( i, j-i);
+
+    //tirar(i-1,j) formas de llegar a la cantidad j sin coger esa cara de valor i
+    //tirar(i,j-i) formas de llegar a la cantidad descontada (j-i) porque cojo ese valor i
 
  @ </answer> */
 
@@ -42,10 +45,10 @@ long long int tirar(int k, int s) {
     //relleno la matriz de izda a dcha y arriba a abajo
     for (int i = 1; i <= k; i++) {
         for (int j = 1; j <= s; j++) {
-            if ((j >= i)) {
+            if ((j >= i)) {//si la cantidad pendiente es mayor que el valor de la cara
                 m[i][j] = m[i - 1][j] + m[i][j - i];
             }
-            else {//para que no se salga del vector cuando j es pequeño
+            else {//para que no se salga del vector cuando j es pequeï¿½o
                 m[i][j] = m[i - 1][j];
             }
         }
@@ -55,7 +58,7 @@ long long int tirar(int k, int s) {
 
 
  // ================================================================
- // Escribe el código completo de tu solución aquí debajo
+ // Escribe el cï¿½digo completo de tu soluciï¿½n aquï¿½ debajo
  // ================================================================
  //@ <answer>
 
@@ -69,11 +72,11 @@ void resuelveCaso() {
 
     // resolver el caso posiblemente llamando a otras funciones
 
-    // escribir la solución
+    // escribir la soluciï¿½n
 }
 
 //@ </answer>
-//  Lo que se escriba dejado de esta línea ya no forma parte de la solución.
+//  Lo que se escriba dejado de esta lï¿½nea ya no forma parte de la soluciï¿½n.
 
 int main() {
     // ajustes para que cin extraiga directamente de un fichero

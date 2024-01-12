@@ -13,6 +13,19 @@ using namespace std;
 //Altura: las canciones (posiciones vector solucion)
 
 
+int estimar(vector<pair<int, int>>const& canciones, int tiempoAct, int k, const vector<int> &sol) {
+    int i = k + 1; //para las sguientes etapas
+    int sumaTiempo = tiempoAct; //tiempo para estimar
+    int sumaSatis = 0;//satisfaccion a estimar
+
+    while (i < sol.size() && sumaTiempo + canciones[i].first <= tiempo) {
+        sumaSatis += canciones[i].second;
+        sumaTiempo += canciones[i].first;
+        i++;
+    }
+    
+}
+
 void resolverVA(vector<pair<int,int>>const &canciones,const int tiempoIda, const int tiempoVuelta,int k, vector <int>& sol, int &satisAct, int& satisMejor, int &tiempoAct,vector<int>& solMejor) {
     //cojo para la ida
     sol[k] = 1; //ida
@@ -59,6 +72,11 @@ void resolverVA(vector<pair<int,int>>const &canciones,const int tiempoIda, const
             solMejor = sol;
         }
     }
+    //falta estimar
+    else {
+        if (estimar(canciones, tiempoAct, k, sol) + satisAct > satisMejor)
+            resolverVA(canciones, tiempoIda, tiempoVuelta, k + 1, sol, satisAct, satisMejor, tiempoAct, solMejor);
+    }
 }
 
 // Resuelve un caso de prueba, leyendo de la entrada la
@@ -82,9 +100,7 @@ bool resuelveCaso() {
     int tAct= 1, satisMejor = 1, satisAct = 1;
     resolverVA(canciones,t1,t2,0,sol,satisAct, satisMejor,tAct, sol);
     
-    for (int i = 0; i < sol.size(); ++i) {
-        cout << sol[i] << "\n";
-    }
+    cout << satisMejor <<"\n";
     // escribir sol
 
     return true;
