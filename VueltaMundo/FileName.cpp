@@ -1,59 +1,60 @@
-﻿// Nestor Marin Gomez    .....
-// A79 ......
+﻿// Nombre del alumno .....
+// Usuario del Juez ......
 
 
 #include <iostream>
 #include <iomanip>
 #include <fstream>
 #include <vector>
-#include <string>
 
 using namespace std;
 
+using lli = long long int;
 
 // función que resuelve el problema
-pair<bool,int> resolver(const vector<int> &v) {
-
-    bool ok = false;
-    int suma = 0;
-    int index = - 1;
-
-    for (int i = v.size() - 1; i >= 0; --i) {
-        if (v[i] == suma) {
-            return {true,i};
-        }
-        else {
-            suma += v[i];
-        }
-    }
-
-    return { ok, index };
-}
-
 
 // Resuelve un caso de prueba, leyendo de la entrada la
 // configuración, y escribiendo la respuesta
-void resuelveCaso() {
+bool resuelveCaso() {
     // leer los datos de la entrada
-    int nElems;
-    cin >> nElems;
+    int nDias;
+    cin >> nDias;
+    if (nDias == -1)
+        return false;
 
-    vector<int> v(nElems);
+    vector<lli> v(nDias);
 
-    for (int i = 0; i < nElems; ++i)
-    {
+    for (int i = 0; i < nDias; ++i) {
         cin >> v[i];
     }
 
-    pair<bool,int> sol = resolver(v);
 
-    if (sol.first == true)
-    {
-        cout << "Si " << sol.second << "\n";
+    //calculo en un vector la suma acumulada de los km
+
+    vector<lli> sumaAcumulada(nDias + 1, 0);
+
+    for(int i = nDias -1; i >= 0; --i) {
+        sumaAcumulada[i] = sumaAcumulada[i + 1] + v[i];//vector de acumulados por dia
     }
-    else cout << "No \n";
+
+
+    int nPreguntas;
+    cin >> nPreguntas;
+
+    for (int i = 0; i < nPreguntas; ++i) {
+        int dia; 
+        cin >> dia;
+        cout << sumaAcumulada[dia-1] << "\n";
+    }
+
+    cout << "---\n";
+
+
+
     // escribir sol
 
+
+    return true;
 
 }
 
@@ -66,10 +67,8 @@ int main() {
 #endif 
 
 
-    int numCasos;
-    std::cin >> numCasos;
-    for (int i = 0; i < numCasos; ++i)
-        resuelveCaso();
+    while (resuelveCaso())
+        ;
 
 
     // Para restablecer entrada. Comentar para acepta el reto

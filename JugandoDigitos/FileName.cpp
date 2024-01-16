@@ -1,59 +1,55 @@
-﻿// Nestor Marin Gomez    .....
-// A79 ......
+﻿// Nestor Marin Gomez 
+// a79
 
 
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-#include <vector>
 #include <string>
+#include <vector>
 
+using lli = long long int;
 using namespace std;
 
 
+//Casos base:
+//  si n < 10:
+//          si n %2 == 1 (impar) n-1;
+//          sin n %2 == 0 (par) n+1
+// 
+//Caso recursivo:
+// 
+// resolver(n/10) *10 + r % 10;
+
+
+
 // función que resuelve el problema
-pair<bool,int> resolver(const vector<int> &v) {
-
-    bool ok = false;
-    int suma = 0;
-    int index = - 1;
-
-    for (int i = v.size() - 1; i >= 0; --i) {
-        if (v[i] == suma) {
-            return {true,i};
-        }
-        else {
-            suma += v[i];
-        }
-    }
-
-    return { ok, index };
+ int resolver(int d) {
+     if (d < 10) {//caso base (condicion de parada)
+         if (d % 2 == 0) {//es par
+             return d + 1;
+         }
+         else {
+             return d - 1;
+         }
+     }
+     else {
+         int condicion = ((d % 10) % 2 == 0) ? (d % 10) + 1 : (d % 10) - 1;
+         return resolver(d / 10) * 10 + condicion ;
+     }
+  
 }
-
 
 // Resuelve un caso de prueba, leyendo de la entrada la
 // configuración, y escribiendo la respuesta
 void resuelveCaso() {
     // leer los datos de la entrada
-    int nElems;
-    cin >> nElems;
+    int n;
+    cin >> n;
 
-    vector<int> v(nElems);
-
-    for (int i = 0; i < nElems; ++i)
-    {
-        cin >> v[i];
-    }
-
-    pair<bool,int> sol = resolver(v);
-
-    if (sol.first == true)
-    {
-        cout << "Si " << sol.second << "\n";
-    }
-    else cout << "No \n";
+    int sol = resolver(n);
     // escribir sol
-
+    cout << sol <<"\n";
 
 }
 

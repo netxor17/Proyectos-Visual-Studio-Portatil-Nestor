@@ -1,5 +1,5 @@
-﻿// Nestor Marin Gomez    .....
-// A79 ......
+﻿// Nombre del alumno .....
+// Usuario del Juez ......
 
 
 #include <iostream>
@@ -12,48 +12,24 @@ using namespace std;
 
 
 // función que resuelve el problema
-pair<bool,int> resolver(const vector<int> &v) {
-
-    bool ok = false;
-    int suma = 0;
-    int index = - 1;
-
-    for (int i = v.size() - 1; i >= 0; --i) {
-        if (v[i] == suma) {
-            return {true,i};
-        }
-        else {
-            suma += v[i];
-        }
-    }
-
-    return { ok, index };
+string resolver(int n) {
+    //casos base
+    if (n == 0) return "0";
+    else if (n == 1) return "1";
+    //caso recursivo
+    else return resolver(n / 2) + char('0' + n % 2);
 }
-
 
 // Resuelve un caso de prueba, leyendo de la entrada la
 // configuración, y escribiendo la respuesta
 void resuelveCaso() {
     // leer los datos de la entrada
-    int nElems;
-    cin >> nElems;
+    int numero;
+    cin >> numero;
 
-    vector<int> v(nElems);
-
-    for (int i = 0; i < nElems; ++i)
-    {
-        cin >> v[i];
-    }
-
-    pair<bool,int> sol = resolver(v);
-
-    if (sol.first == true)
-    {
-        cout << "Si " << sol.second << "\n";
-    }
-    else cout << "No \n";
+    string sol = resolver(numero);
     // escribir sol
-
+    cout << sol << "\n";
 
 }
 

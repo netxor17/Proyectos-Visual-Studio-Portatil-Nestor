@@ -10,8 +10,8 @@ int resolver(std::vector <int> const& v, int L) {
 	sumaMax = sumaAct; posIni = 0;
 	// Resto del vector
 	for (int i = L; i < v.size(); ++i) {
-		sumaAct -= v[i - L];
-		sumaAct += v[i];
+		sumaAct -= v[i - L];//resto la del inicio anterior
+		sumaAct += v[i];//sumas la nueva
 		if (sumaAct >= sumaMax) { // El intervalo es mejor
 			posIni = i - L + 1;
 			sumaMax = sumaAct;

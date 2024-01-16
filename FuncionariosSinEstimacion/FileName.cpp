@@ -15,6 +15,7 @@ bool esValida(vector<int>& marcas, const int &i) {
     }
     return true;
 }
+
 // Ramas: el coste de cada trabajo
 // Altura: cada funcionario
 // Vector solucion: posiciones son los funcionarios, y los valores son el coste de las tareas
