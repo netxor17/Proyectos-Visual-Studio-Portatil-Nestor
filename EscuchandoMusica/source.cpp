@@ -13,69 +13,76 @@ using namespace std;
 //Altura: las canciones (posiciones vector solucion)
 
 
-int estimar(vector<pair<int, int>>const& canciones, int tiempoAct, int k, const vector<int> &sol) {
-    int i = k + 1; //para las sguientes etapas
-    int sumaTiempo = tiempoAct; //tiempo para estimar
+int estimar(vector<pair<int, int>>const& canciones, int tiempoIdaAct, int tiempoVueltaAct, int k, const vector<int> &sol, int tiempoIda, int tiempoVuelta) {
+    int i = k + 1; //para las siguientes etapas
+    int sumaTiempo = tiempoIdaAct + tiempoVueltaAct; //tiempo para estimar
     int sumaSatis = 0;//satisfaccion a estimar
+    int sumaTiemposTrayectos = tiempoIda + tiempoVuelta; //tiempo total trayectos
 
-    while (i < sol.size() && sumaTiempo + canciones[i].first <= tiempo) {
+    while (i < sol.size() && sumaTiempo + canciones[i].first <= sumaTiemposTrayectos) {
         sumaSatis += canciones[i].second;
         sumaTiempo += canciones[i].first;
         i++;
     }
-    
+    //puede quedar un tiempo donde no cabe la siguiente cancion pero aun queda tiempo
+    if (i < sol.size() && sumaTiempo < sumaTiemposTrayectos) {//parte proporcional de la cancion que se puede coger aun
+        sumaSatis += canciones[i].second * (sumaTiemposTrayectos - sumaTiempo) / canciones[i].first + 1;
+    }
+
+    return sumaSatis;
 }
 
-void resolverVA(vector<pair<int,int>>const &canciones,const int tiempoIda, const int tiempoVuelta,int k, vector <int>& sol, int &satisAct, int& satisMejor, int &tiempoAct,vector<int>& solMejor) {
+void resolverVA(vector<pair<int,int>>const &canciones,const int tiempoIda,int &tiempoIdaAct,int &tiempoVueltaAct, const int tiempoVuelta,int k, vector <int>& sol, int &satisAct, int& satisMejor, int &tiempoAct,vector<int>& solMejor) {
     //cojo para la ida
     sol[k] = 1; //ida
     satisAct += canciones[k].second;
-    tiempoAct += canciones[k].first;
+    tiempoIdaAct += canciones[k].first;
+
     //marcado
-    if (tiempoAct <= tiempoIda) {// es valida para la ida
+    if (tiempoIdaAct <= tiempoIda) {// es valida para la ida
         if (k == sol.size() - 1) {
-            if (satisAct > satisMejor && tiempoAct == tiempoIda) {
+            if (satisAct > satisMejor && tiempoIdaAct == tiempoIda && tiempoVueltaAct == tiempoVuelta) {
                 satisMejor = satisAct;
                 solMejor = sol;
             }
         }
         else {
-            resolverVA(canciones,tiempoIda,tiempoVuelta,k+1,sol,satisAct,satisMejor,tiempoAct,solMejor);
+            resolverVA(canciones,tiempoIda,tiempoIdaAct,tiempoVueltaAct,tiempoVuelta,k+1,sol,satisAct,satisMejor,tiempoAct,solMejor);
         }
     }
     //desmarco
     satisAct -= canciones[k].second;
-    tiempoAct -= canciones[k].first;
+    tiempoIdaAct -= canciones[k].first;
     //cojo para la vuelta
     sol[k] = 2;//vuelta
     satisAct += canciones[k].second;
-    tiempoAct += canciones[k].first;
+    tiempoVueltaAct += canciones[k].first;
     //marco
-    if (tiempoAct <= tiempoVuelta) {// es valida para la ida
+    if (tiempoVueltaAct <= tiempoVuelta) {// es valida para la ida
         if (k == sol.size() - 1) {
-            if (satisAct > satisMejor && tiempoAct == tiempoVuelta) {
+            if (satisAct > satisMejor && tiempoIdaAct == tiempoIda && tiempoVueltaAct == tiempoVuelta) {
                 satisMejor = satisAct;
                 solMejor = sol;
             }
         }
         else {
-            resolverVA(canciones, tiempoIda, tiempoVuelta, k + 1, sol, satisAct, satisMejor, tiempoAct, solMejor);
+            resolverVA(canciones, tiempoIda, tiempoIdaAct, tiempoVueltaAct, tiempoVuelta, k + 1, sol, satisAct, satisMejor, tiempoAct, solMejor);
         }
     }
     satisAct -= canciones[k].second;
-    tiempoAct -= canciones[k].first;
+    tiempoVueltaAct -= canciones[k].first;
     //no la cojo
     sol[k] = 0;
     if (k == sol.size() - 1) {
-        if (satisAct > satisMejor && tiempoAct <= tiempoVuelta) {
+        if (satisAct > satisMejor && tiempoIdaAct == tiempoIda && tiempoVueltaAct == tiempoVuelta) {
             satisMejor = satisAct;
             solMejor = sol;
         }
     }
     //falta estimar
     else {
-        if (estimar(canciones, tiempoAct, k, sol) + satisAct > satisMejor)
-            resolverVA(canciones, tiempoIda, tiempoVuelta, k + 1, sol, satisAct, satisMejor, tiempoAct, solMejor);
+        if (estimar(canciones,tiempoIdaAct,tiempoVueltaAct,k,sol,tiempoIda,tiempoVuelta) + satisAct > satisMejor)
+            resolverVA(canciones, tiempoIda, tiempoIdaAct, tiempoVueltaAct, tiempoVuelta, k + 1, sol, satisAct, satisMejor, tiempoAct, solMejor);
     }
 }
 
@@ -96,9 +103,13 @@ bool resuelveCaso() {
     for (int i = 0; i < n; ++i) {
         cin >> canciones[i].first >> canciones[i].second;
     }
-    //(vector<pair<int,int>>const &canciones,const int tiempoIda, const int tiempoVuelta,int k, vector <int>& sol, int &satisAct, int& satisMejor, int &tiempoAct,vector<int>& solMejor) {
-    int tAct= 1, satisMejor = 1, satisAct = 1;
-    resolverVA(canciones,t1,t2,0,sol,satisAct, satisMejor,tAct, sol);
+
+    vector<bool> marcas(n);
+
+    int tIdaAct =0, tVueltaAct = 0, tAct= 0, satisMejor = 0, satisAct = 0;
+
+    //resolverVA(canciones,t1,t2,0,sol,satisAct, satisMejor,tAct, sol);
+    resolverVA(canciones, t1, tIdaAct,tVueltaAct,t2, 0, sol, satisAct, satisMejor, tAct, sol);
     
     cout << satisMejor <<"\n";
     // escribir sol

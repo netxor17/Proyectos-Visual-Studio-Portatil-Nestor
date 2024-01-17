@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{7acc326c-0da1-4d1e-bc65-0c9af056d1cf}</ProjectGuid>
-    <RootNamespace>CintasColores</RootNamespace>
+    <ProjectGuid>{272f79db-fccb-460c-bd7b-4fc99d99691c}</ProjectGuid>
+    <RootNamespace>TorneoTenis</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

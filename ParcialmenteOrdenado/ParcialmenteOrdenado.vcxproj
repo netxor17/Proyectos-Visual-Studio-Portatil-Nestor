@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{7acc326c-0da1-4d1e-bc65-0c9af056d1cf}</ProjectGuid>
-    <RootNamespace>CintasColores</RootNamespace>
+    <ProjectGuid>{3fa5a335-d526-423e-8d0c-74590f4020ec}</ProjectGuid>
+    <RootNamespace>ParcialmenteOrdenado</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
