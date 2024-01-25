@@ -13,7 +13,7 @@ using namespace std;
 struct tSol {
     int rondaAct;
     int contPartidos;
-    bool jugado;
+    bool ganador;
 
 };
 
@@ -22,10 +22,10 @@ tSol resolver(const vector<string>& v, int ini, int fin, int ronda) {
     
     if (ini + 2 == fin) {//vector dos elementos
         if (v[ini] == "NP" && v[ini + 1] == "NP") {
-            return {1,0,false };
+            return {1,0,false};
         }
         else if (v[ini] == "NP" || v[ini + 1] == "NP") {
-            return { 1,0,true };
+            return { 1,0,true};
         }
         else return { 1,1,true };
     }
@@ -37,10 +37,10 @@ tSol resolver(const vector<string>& v, int ini, int fin, int ronda) {
         tSol sDer = resolver(v, mitad, fin, ronda);
 
         if (sIzq.rondaAct +1 <= ronda) {
-            return { sIzq.rondaAct + 1, sIzq.contPartidos + sDer.contPartidos + (sIzq.jugado && sDer.jugado), sIzq.jugado || sDer.jugado };
+            return { sIzq.rondaAct + 1, sIzq.contPartidos + sDer.contPartidos + (sIzq.ganador && sDer.ganador), sIzq.ganador || sDer.ganador };
         }
         else {
-            return{ sIzq.rondaAct + 1 ,sIzq.contPartidos + sDer.contPartidos,sIzq.jugado || sDer.jugado };
+            return{ sIzq.rondaAct + 1 ,sIzq.contPartidos + sDer.contPartidos,sIzq.ganador || sDer.ganador };
         }
 
     }

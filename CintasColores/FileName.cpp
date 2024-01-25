@@ -23,7 +23,7 @@ struct tCinta {
 void particiones(vector<tCinta>& v, int& p, int& q) {//parametros por referencia a modificar
     p = 0; q = v.size() - 1; int k = 0;
     while (k <= q) {//mientras el iterador no se pase
-        if (v[k].color == 'v') ++k;//si es rojo,aumento iterador
+        if (v[k].color == 'v') ++k;//si es rojo,aumento pivote
         else if (v[k].color == 'a') {//si es azul
             swap(v[p], v[k]);//intercambio
             ++p;

@@ -34,7 +34,6 @@ struct tSol {
 bool esValida(const std::vector<int>& piezasDisponibles, const std::vector<int>& contadorPiezasUsadas, const tSol& sol, int colorActual, int pos) {
     if (piezasDisponibles[colorActual] < 1 || (colorActual == verde && colorActual == sol.torre[pos - 1]) || (colorActual == verde && contadorPiezasUsadas[verde] + 1 > contadorPiezasUsadas[azul])) {
         return false; 
-
     }
     else {
         return true;

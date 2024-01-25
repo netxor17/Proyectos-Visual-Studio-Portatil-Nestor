@@ -37,7 +37,6 @@ void resolverVA(vector<pair<int,int>>const &canciones,const int tiempoIda,int &t
     sol[k] = 1; //ida
     satisAct += canciones[k].second;
     tiempoIdaAct += canciones[k].first;
-
     //marcado
     if (tiempoIdaAct <= tiempoIda) {// es valida para la ida
         if (k == sol.size() - 1) {
@@ -53,6 +52,7 @@ void resolverVA(vector<pair<int,int>>const &canciones,const int tiempoIda,int &t
     //desmarco
     satisAct -= canciones[k].second;
     tiempoIdaAct -= canciones[k].first;
+
     //cojo para la vuelta
     sol[k] = 2;//vuelta
     satisAct += canciones[k].second;
@@ -71,6 +71,7 @@ void resolverVA(vector<pair<int,int>>const &canciones,const int tiempoIda,int &t
     }
     satisAct -= canciones[k].second;
     tiempoVueltaAct -= canciones[k].first;
+
     //no la cojo
     sol[k] = 0;
     if (k == sol.size() - 1) {
@@ -111,7 +112,10 @@ bool resuelveCaso() {
     //resolverVA(canciones,t1,t2,0,sol,satisAct, satisMejor,tAct, sol);
     resolverVA(canciones, t1, tIdaAct,tVueltaAct,t2, 0, sol, satisAct, satisMejor, tAct, sol);
     
-    cout << satisMejor <<"\n";
+    if (satisMejor > 0)
+        cout << satisMejor << "\n";
+
+    else cout << "Imposible\n";
     // escribir sol
 
     return true;
