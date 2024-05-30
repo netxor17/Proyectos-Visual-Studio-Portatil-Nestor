@@ -1,7 +1,6 @@
 ﻿// Nestor Marin Gomez
 // A80
 
-
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -16,65 +15,54 @@ public:
     bintree_ext() : bintree <T>() {}
     bintree_ext(bintree_ext <T> const& l, T const& e, bintree_ext <T> const& r) :
         bintree <T>(l, e, r) {}
-    int acum() const {
-        return acumNodos(this->raiz).first;
+    int suma() {
+        return sumaNodos(this->raiz);
     }
+
 private:
-    pair<int, int> acumNodos(Link r) const {
+    int sumaNodos(Link r) {
         if (r == nullptr) {
-            return { 0,0 };
+            return 0;
         }
         else {
-            //numAcum, suma
-            pair<int, int> izq = acumNodos(r->left);
-            pair<int, int> der = acumNodos(r->right);
-            int nAcums = izq.first + der.first;
-            if (izq.second + der.second == r->elem) {
-                return { nAcums + 1, izq.second + der.second + r->elem };
-            }
-            else {
-                return { nAcums , izq.second + der.second + r->elem };
-            }
+            int izq = sumaNodos(r->left);
+            int der = sumaNodos(r->right);
+
+            return izq + der + r->elem;
         }
     }
 };
 
+
 template <typename T>
-inline bintree_ext <T> leerArbol_ext(T vacio) {
+inline bintree_ext<T> leerArbol_ext(T vacio) {
     T raiz;
     std::cin >> raiz;
     if (raiz == vacio) { // es un arbol vacio
         return {};
     }
     else { // leer recursivamente los hijos
-        bintree_ext <T> iz = leerArbol_ext(vacio);
-        bintree_ext <T> dr = leerArbol_ext(vacio);
-        return { iz , raiz , dr };
+        bintree_ext<T> iz = leerArbol_ext(vacio);
+        bintree_ext<T> dr = leerArbol_ext(vacio);
+        return { iz, raiz, dr };
     }
 }
 
 template <class T>
-int acum(bintree<T> const& arbol) {
-    return resolver(arbol).first;
+int suma2(bintree<T> const& arbol) {
+    return resolver(arbol);
 }
 
 // función que resuelve el problema
 template <class T>
-pair<int, int>  resolver(bintree<T> const& arbol)  { //numAcum, suma
+int  resolver(bintree<T> const& arbol) { //numAcum, suma
     if (arbol.empty()) {
-        return { 0,0 };
+        return 0;
     }
     else {
-        //numAcum, suma
-        pair<int, int> izq = resolver(arbol.left());
-        pair<int, int> der = resolver(arbol.right());
-        int nAcums = izq.first + der.first;
-        if (izq.second + der.second == arbol.root()) {
-            return { nAcums + 1, izq.second + der.second + arbol.root() };
-        }
-        else {
-            return { nAcums , izq.second + der.second + arbol.root() };
-        }
+        int izq = resolver(arbol.left());
+        int der = resolver(arbol.right());
+        return izq + der + arbol.root();
     }
 }
 
@@ -84,10 +72,10 @@ pair<int, int>  resolver(bintree<T> const& arbol)  { //numAcum, suma
 // configuración, y escribiendo la respuesta
 void resuelveCaso() {
     // leer los datos de la entrada
-    bintree<int> arbol = leerArbol_ext(-1);
-    int sol1 = acum(arbol);
-   // bintree_ext<int> extendido = leerArbol_ext(-1);
-    //int sol = extendido.acum();
+    bintree<int> arbol = leerArbol(-1);
+    int sol1 = suma2(arbol);
+    //bintree_ext<int> extendido = leerArbol_ext(-1);
+    //int sol = extendido.suma();
     cout << sol1 << "\n";
 
     // escribir sol
