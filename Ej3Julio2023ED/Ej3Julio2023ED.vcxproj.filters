@@ -15,11 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FileName.cpp">
+    <ClCompile Include="Ej2Junio2019.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="casos.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bintree_eda.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
