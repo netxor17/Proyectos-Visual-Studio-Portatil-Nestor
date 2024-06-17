@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ej3.cpp" />
+    <ClCompile Include="ej1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="datos.txt" />

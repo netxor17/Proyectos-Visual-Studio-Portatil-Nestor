@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <fstream>
 #include <vector>
+#include <cmath>
 
 using namespace std;
 
@@ -15,18 +16,37 @@ void inicializaIntervalo(vector<double>&v, double ini, double fin) {
         v.push_back(i);
         i += 0.01;
     }
+    v.push_back(i);
+}
+
+double valor(const vector<int>& v, double n) {
+    double suma = 0;
+    int i = 0;
+    while (i < v.size() - 1) {
+        suma += v[i] * n;
+        i++;
+    }
+    suma += v[i];
+    return suma;
 }
 
 // función que resuelve el problema
-double resolver(const vector<int> &v, vector<double> intervalo, int ini, int fin) {
-    double raiz = 0;
-    int mitad;
+double resolver(const vector<int> &v, vector<double> const &intervalo, double ini, double fin) {
+    double mitad = (ini + fin) / 2.0; 
+    double resultado = valor(v, mitad);
+    double resultado2 =valor(v, ini);
     //caso base
-    //caso base
-
-    //caso recursivo
-
-    return raiz;
+    if (resultado <= 0.01) {
+        return mitad;
+    }
+    else { //caso recursivo
+        if (resultado > 0) {
+           return resolver(v, intervalo, ini, mitad);
+        }
+        else if (resultado < 0)  {
+            return resolver(v, intervalo, mitad, fin);
+        }
+    }
 }
 
 // Resuelve un caso de prueba, leyendo de la entrada la
@@ -44,8 +64,7 @@ void resuelveCaso() {
     inicializaIntervalo(intervalo, ini, fin);
     double sol = resolver(polinomio,intervalo, ini, fin);
     // escribir sol
-
-
+    cout << setprecision(2) << sol <<endl;
 }
 
 int main() {
