@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{0d1232e8-8564-455e-944f-b3f0f4f91c60}</ProjectGuid>
-    <RootNamespace>FalEnero2024</RootNamespace>
+    <ProjectGuid>{0eda0d18-3ef2-49b3-9e72-16b4564348b2}</ProjectGuid>
+    <RootNamespace>Junio2023FAL</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,12 +127,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ej1.cpp" />
-    <ClCompile Include="ej3.cpp" />
-    <ClCompile Include="FileName.cpp" />
+    <Text Include="datos.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="datos.txt" />
+    <ClCompile Include="ej3.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
