@@ -32,9 +32,7 @@ int resolverNoFinal(long long int num, int const& D) {
     //caso base:
     if (num < 10)
         return (digito == D ? 1 : 0); // añadimos al cont el digito
-
     else {
-
         return  resolverNoFinal(num / 10, D) + (digito == D ? 1 : 0); //resultado llamada recursiva + si ese digito es == D
     }
 }
