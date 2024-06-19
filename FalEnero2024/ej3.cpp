@@ -48,11 +48,13 @@ void resolverVA(const vector<tDatos>& d,int tiempoLimite, int &tiempoRestante,in
 vector<int>& mejorSol) {
     sol[k] = true; //me subo a la atraccion
     if (d[k].tiempo <= tiempoRestante) {
+        //marco
         tiempoAct += d[k].tiempo;//aumento tiempo
         tiempoRestante -= d[k].tiempo;
         satisAct += d[k].satis;
         if (d[k].acuatico == 1) mojan++;
         else if (d[k].acuatico == 0) salpican++;
+        //fin marcaje
         if (k == sol.size() - 1) {//he llegado a una solucion final
             if (mojan <= salpican) {
                 if (satisAct > satisMejor) {
@@ -64,11 +66,13 @@ vector<int>& mejorSol) {
         else {
             resolverVA(d, tiempoLimite, tiempoRestante, k + 1, mojan, salpican, tiempoAct, satisAct, satisMejor, sol, mejorSol);
         }
+        //desmarco
         tiempoAct -= d[k].tiempo;
         tiempoRestante += d[k].tiempo;
         satisAct -= d[k].satis;
         if (d[k].acuatico == 1) mojan--;
         else if (d[k].acuatico == 0) salpican--;
+        //fin desmarcaje
     }
     //no la cojo
     sol[k] = false;

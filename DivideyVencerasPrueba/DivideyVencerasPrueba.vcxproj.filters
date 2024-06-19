@@ -15,15 +15,14 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="VecesApareceNumero.cpp">
+    <ClCompile Include="NumerosCaucasicos.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="datos1.txt" />
-    <Text Include="datos2.txt" />
-    <Text Include="datos3.txt" />
-    <Text Include="datos4.txt" />
-    <Text Include="datos5.txt" />
+    <None Include="35sample.in" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="numerosCaucasicos.txt" />
   </ItemGroup>
 </Project>
