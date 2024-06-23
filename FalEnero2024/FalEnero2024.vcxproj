@@ -127,12 +127,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ej1.cpp" />
-    <ClCompile Include="ej3.cpp" />
-    <ClCompile Include="FileName.cpp" />
+    <Text Include="datos.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="datos.txt" />
+    <ClCompile Include="FileName.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

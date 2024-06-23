@@ -85,6 +85,7 @@ vector<int>& mejorSol) {
         }
     }
     else {
+        //if estimacion() correcta
         resolverVA(d, tiempoLimite, tiempoRestante, k + 1, mojan, salpican, tiempoAct, satisAct, satisMejor, sol, mejorSol);
     }
 }

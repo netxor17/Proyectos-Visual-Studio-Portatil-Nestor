@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{71b5cde1-9545-49fb-9531-27bef0bf8020}</ProjectGuid>
-    <RootNamespace>DivideyVencerasPrueba</RootNamespace>
+    <ProjectGuid>{5b504baf-aaf0-474c-a6e9-ee9a16dcd9bc}</ProjectGuid>
+    <RootNamespace>ProgramacionDinamicaDA</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,14 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="cruzandoRio.cpp" />
+    <ClCompile Include="alinearCadenas.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="35sample.in" />
+    <ClInclude Include="Matriz.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="cruzandoRio.txt" />
-    <Text Include="numerosCaucasicos.txt" />
+    <Text Include="alinearCadenas.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

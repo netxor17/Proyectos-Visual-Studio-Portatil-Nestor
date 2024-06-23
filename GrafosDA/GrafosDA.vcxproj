@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{71b5cde1-9545-49fb-9531-27bef0bf8020}</ProjectGuid>
-    <RootNamespace>DivideyVencerasPrueba</RootNamespace>
+    <ProjectGuid>{291cb479-12af-4035-a721-d47cabe9403b}</ProjectGuid>
+    <RootNamespace>GrafosDA</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,14 +127,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="cruzandoRio.cpp" />
+    <ClInclude Include="ConjuntosDisjuntos.h" />
+    <ClInclude Include="DigrafoValorado.h" />
+    <ClInclude Include="Grafo.h" />
+    <ClInclude Include="GrafoValorado.h" />
+    <ClInclude Include="IndexPQ.h" />
+    <ClInclude Include="PriorityQueue.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="35sample.in" />
+    <ClCompile Include="minasEmperador.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="cruzandoRio.txt" />
-    <Text Include="numerosCaucasicos.txt" />
+    <Text Include="autonomiaCoches.txt" />
+    <Text Include="minasEmperador.txt" />
+    <Text Include="peajeSombra.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -47,8 +47,8 @@ bool resuelveCaso() {
 	for (int& i : v) std::cin >> i;
 	// LLamada a la funcion que resuelve el problema y escribir el resultado
 	tSol sol = menorPico(v);
-	if (sol.ok) cout << sol.pos << "\n";
-	else cout << "no hay\n";
+	if (sol.ok) cout << sol.pos << endl;
+	else cout << "no hay" <<endl;
 		return true;
 }
 int main() {

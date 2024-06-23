@@ -15,11 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="datos.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="FileName.cpp">
+    <ClCompile Include="cuestaSumar.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PriorityQueue.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="cuestaSumar.txt" />
   </ItemGroup>
 </Project>
