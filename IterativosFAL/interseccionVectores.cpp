@@ -8,7 +8,7 @@ using namespace std;
 //Nombre alumno: Nestor Marin Gomez
 //Usuario juez: A76
 
-//Coste final de la solucion: O(n log n), ya que se usa la funcion sort.
+//Coste final de la solucion: O(n log n), ya que se usa la funcion sort, que tiene coste O(n log n).
 
 vector<int> resolver(vector<int> const& v1, vector<int> const& v2) {
 	vector<int> sol;
