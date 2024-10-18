@@ -129,9 +129,10 @@
   <ItemGroup>
     <Text Include="casos_apartamentos.txt" />
     <Text Include="casos_encuestas.txt" />
+    <Text Include="casos_interseccion.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="apartamentoConVistas.cpp" />
+    <ClCompile Include="interseccionVectores.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
