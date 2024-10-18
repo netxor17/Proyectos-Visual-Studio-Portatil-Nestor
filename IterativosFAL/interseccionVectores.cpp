@@ -5,16 +5,16 @@
 #include <algorithm>
 using namespace std;
 
+//Nombre alumno: Nestor Marin Gomez
+//Usuario juez: A76
 
-// función que resuelve el problema
-//Coste de la funcion "resolver": O(min(n1,n2)), siendo n1 y n2 los tamaños de los vectores
-//El bucle while solamente recorre los dos vectores una vez, y cuando se acaba uno de ellos se sale
-// por lo que solamente recorreria el mas pequeño, despues saldria.
+//Coste final de la solucion: O(n log n), ya que se usa la funcion sort.
+
 vector<int> resolver(vector<int> const& v1, vector<int> const& v2) {
 	vector<int> sol;
 	int i = 0;
 	int j = 0;
-	while (i < v1.size() && j < v2.size()) {//Coste O(min(v1.size,v2.size))
+	while (i < v1.size() && j < v2.size()) {
 		if (v1[i] == v2[j]) {
 			sol.push_back(v1[i]);
 			++i;
