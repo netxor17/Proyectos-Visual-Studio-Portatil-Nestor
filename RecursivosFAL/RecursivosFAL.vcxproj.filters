@@ -14,17 +14,4 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="casos_encuestas.txt" />
-    <Text Include="casos_apartamentos.txt" />
-    <Text Include="casos_interseccion.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="aterrizajeEmergencia.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="casos_aterrizaje.txt">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-  </ItemGroup>
 </Project>
