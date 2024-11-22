@@ -15,11 +15,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ViajeAbuelo.cpp">
+    <ClCompile Include="lucesNavidad.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="casosAbuelo.txt" />
+    <Text Include="lucesNavidad.txt" />
   </ItemGroup>
 </Project>

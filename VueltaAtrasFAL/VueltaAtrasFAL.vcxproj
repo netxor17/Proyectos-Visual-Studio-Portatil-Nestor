@@ -18,17 +18,11 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="ViajeAbuelo.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="casosAbuelo.txt" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{9fdcf11e-98c5-46e5-9844-515d68cbb587}</ProjectGuid>
-    <RootNamespace>RecursivosFAL</RootNamespace>
+    <ProjectGuid>{be51aa48-7000-4ad3-bfa8-6add4eda7bf7}</ProjectGuid>
+    <RootNamespace>VueltaAtrasFAL</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -132,6 +126,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="lucesNavidad.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="lucesNavidad.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
