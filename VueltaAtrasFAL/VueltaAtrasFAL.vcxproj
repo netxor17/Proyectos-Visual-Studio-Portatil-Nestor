@@ -127,9 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="lucesNavidad.cpp" />
+    <ClCompile Include="compraSemana.cpp" />
+    <ClCompile Include="FileName.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="compraSemana.txt" />
     <Text Include="lucesNavidad.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
