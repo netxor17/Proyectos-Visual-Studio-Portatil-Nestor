@@ -74,6 +74,7 @@ void resolverVA(vector<pair<int,int>>const &canciones,const int tiempoIda,int &t
 
     //no la cojo
     sol[k] = 0;
+    //siempre es sol
     if (k == sol.size() - 1) {
         if (satisAct > satisMejor && tiempoIdaAct == tiempoIda && tiempoVueltaAct == tiempoVuelta) {
             satisMejor = satisAct;

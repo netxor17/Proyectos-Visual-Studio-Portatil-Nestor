@@ -127,13 +127,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="casos_apartamentos.txt" />
-    <Text Include="casos_encuestas.txt" />
-    <Text Include="casos_interseccion.txt" />
+    <Text Include="ej1Enero2024.txt" />
+    <Text Include="ej1Junio2023.txt" />
+    <Text Include="ej1Junio2024.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="aterrizajeEmergencia.cpp" />
-    <ClCompile Include="casos_aterrizaje.txt" />
+    <ClCompile Include="ej1Junio2023.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

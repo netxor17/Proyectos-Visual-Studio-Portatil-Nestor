@@ -15,15 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="casos_encuestas.txt" />
-    <Text Include="casos_apartamentos.txt" />
-    <Text Include="casos_interseccion.txt" />
+    <Text Include="ej1Enero2024.txt" />
+    <Text Include="ej1Junio2024.txt" />
+    <Text Include="ej1Junio2023.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="aterrizajeEmergencia.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="casos_aterrizaje.txt">
+    <ClCompile Include="ej1Junio2023.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

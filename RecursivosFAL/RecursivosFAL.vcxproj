@@ -19,10 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ViajeAbuelo.cpp" />
+    <ClCompile Include="ej2Enero2021.cpp" />
+    <ClCompile Include="ej2Enero2024.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="casosAbuelo.txt" />
+    <Text Include="ej2Enero2024.txt" />
+    <Text Include="eliminarPares.txt" />
+    <Text Include="jugandoDigitos.txt" />
+    <Text Include="numDigitos.txt" />
+    <Text Include="numerosCaucasicos.txt" />
+    <Text Include="numerosInteresantes.txt" />
+    <Text Include="sumaDigitos.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

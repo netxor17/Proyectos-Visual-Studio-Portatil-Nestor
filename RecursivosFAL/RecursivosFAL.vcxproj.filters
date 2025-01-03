@@ -15,11 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ViajeAbuelo.cpp">
+    <ClCompile Include="ej2Enero2024.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="ej2Enero2021.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="casosAbuelo.txt" />
+    <Text Include="numDigitos.txt" />
+    <Text Include="eliminarPares.txt" />
+    <Text Include="numerosInteresantes.txt" />
+    <Text Include="jugandoDigitos.txt" />
+    <Text Include="sumaDigitos.txt" />
+    <Text Include="numerosCaucasicos.txt" />
+    <Text Include="ej2Enero2024.txt" />
   </ItemGroup>
 </Project>
