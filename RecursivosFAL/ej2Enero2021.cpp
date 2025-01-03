@@ -23,6 +23,21 @@ using namespace std;
  // Escribe el código completo de tu solución aquí debajo
  // ================================================================
  //@ <answer>
+int resuelve(const vector<int>& v, const vector<int>& v2, int ini, int fin) {
+    //caso base
+    if (ini == fin) {
+        return v2[ini];
+    }
+    else {
+        int mitad = (ini + fin) / 2;
+        if (v[mitad] == v2[mitad]) { //si son iguales, lo he metido a la derecha
+            return resuelve(v, v2, mitad+1, fin);
+        }
+        else {
+            return resuelve(v, v2, ini, mitad);
+        }
+    }
+}
 
 bool resuelveCaso() {
 
@@ -32,11 +47,17 @@ bool resuelveCaso() {
     if (n==-1)
         return false;
     vector<int> v(n);
+    vector<int> v2(n + 1);
     for (int i = 0; i < n; i++) {
         cin >> v[i];
     }
+    for (int i = 0; i < v2.size(); i++) {
+        cin >> v2[i];
+    }
     // resolver el caso posiblemente llamando a otras funciones
+    int sol = resuelve(v,v2, 0, v2.size() - 1);
 
+    cout << sol << endl;
     // escribir la solución
 
     return true;

@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ej2Enero2024.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="ej2Enero2021.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -31,5 +28,6 @@
     <Text Include="sumaDigitos.txt" />
     <Text Include="numerosCaucasicos.txt" />
     <Text Include="ej2Enero2024.txt" />
+    <Text Include="ej2Enero2021.txt" />
   </ItemGroup>
 </Project>

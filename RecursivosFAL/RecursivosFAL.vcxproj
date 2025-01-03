@@ -20,10 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ej2Enero2021.cpp" />
-    <ClCompile Include="ej2Enero2024.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="casosAbuelo.txt" />
+    <Text Include="ej2Enero2021.txt" />
     <Text Include="ej2Enero2024.txt" />
     <Text Include="eliminarPares.txt" />
     <Text Include="jugandoDigitos.txt" />
