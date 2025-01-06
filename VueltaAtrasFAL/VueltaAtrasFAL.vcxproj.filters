@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FileName.cpp">
+    <ClCompile Include="ej3Junio2024.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -23,5 +23,7 @@
     <Text Include="lucesNavidad.txt" />
     <Text Include="compraSemana.txt" />
     <Text Include="casos.txt" />
+    <Text Include="ej3Enero2024.txt" />
+    <Text Include="ej3Junio2024.txt" />
   </ItemGroup>
 </Project>

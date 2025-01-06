@@ -127,11 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="FileName.cpp" />
+    <ClCompile Include="ej3Junio2024.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="casos.txt" />
     <Text Include="compraSemana.txt" />
+    <Text Include="ej3Enero2024.txt" />
+    <Text Include="ej3Junio2024.txt" />
     <Text Include="lucesNavidad.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

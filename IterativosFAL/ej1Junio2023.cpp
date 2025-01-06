@@ -24,37 +24,34 @@ using namespace std;
  // ================================================================
  //@ <answer>
 
-int contarSegmentosConsecutivos(const vector<int>& v) {
-    int n = v.size();
-    if (n < 2) return 0;  // No hay segmentos si el vector tiene menos de 2 elementos
 
-    int nSegmentos = 0;
-    int longitudSegmento = 1;  // Longitud del segmento consecutivo actual
+long long int contarSegmentosConsecutivos(const vector<int>& v) {
+    long long int longitudSegmento = 1;  // Longitud del segmento actual
+    long long int segmentos = 0;         // Número total de segmentos
 
-    // Recorrer el vector y contar segmentos consecutivos
-    for (int i = 1; i < n; ++i) {
+    for (int i = 1; i < v.size(); ++i) {
         if (abs(v[i] - v[i - 1]) == 1) {
-            // Si los elementos son consecutivos, incrementamos la longitud del segmento
+            // Incrementa la longitud del segmento si es consecutivo
             longitudSegmento++;
         }
         else {
-            // Si los elementos no son consecutivos, verificamos el segmento anterior
+            // Si no es consecutivo, calcula los segmentos válidos del segmento actual
             if (longitudSegmento >= 2) {
-                // Si el segmento tiene al menos 2 elementos, contamos los subsegmentos válidos
-                nSegmentos += (longitudSegmento - 1);
+                segmentos += (longitudSegmento * (longitudSegmento - 1)) / 2;
             }
-            // Reiniciar la longitud del segmento
+            // Reinicia la longitud del segmento
             longitudSegmento = 1;
         }
     }
 
-    // Verificar el último segmento
+    // Considerar el último segmento
     if (longitudSegmento >= 2) {
-        nSegmentos += (longitudSegmento);
+        segmentos += (longitudSegmento * (longitudSegmento - 1)) / 2;
     }
 
-    return nSegmentos;
+    return segmentos;
 }
+
 
 
 void resuelveCaso() {

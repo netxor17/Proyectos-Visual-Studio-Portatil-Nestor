@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ej2Enero2021.cpp" />
+    <ClCompile Include="polinomioHermite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="casosAbuelo.txt" />
@@ -30,6 +30,7 @@
     <Text Include="numDigitos.txt" />
     <Text Include="numerosCaucasicos.txt" />
     <Text Include="numerosInteresantes.txt" />
+    <Text Include="polinomioHermite.txt" />
     <Text Include="sumaDigitos.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

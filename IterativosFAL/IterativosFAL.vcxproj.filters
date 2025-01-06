@@ -18,9 +18,10 @@
     <Text Include="ej1Enero2024.txt" />
     <Text Include="ej1Junio2024.txt" />
     <Text Include="ej1Junio2023.txt" />
+    <Text Include="minimalistas.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ej1Junio2023.cpp">
+    <ClCompile Include="minimalistas.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
