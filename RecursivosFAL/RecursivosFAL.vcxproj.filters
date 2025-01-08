@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="polinomioHermite.cpp">
+    <ClCompile Include="novita.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -30,5 +30,6 @@
     <Text Include="ej2Enero2024.txt" />
     <Text Include="ej2Enero2021.txt" />
     <Text Include="polinomioHermite.txt" />
+    <Text Include="novita.txt" />
   </ItemGroup>
 </Project>

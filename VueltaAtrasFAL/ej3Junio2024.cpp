@@ -7,15 +7,17 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <climits>
 using namespace std;
 
 
 // función que resuelve el problema
-void resolver(const vector<int>& montes, const vector<vector<int>>& distancias, int etapa, const int& maxDistancia, int& distanciaActual, int& minimaDistancia, vector<int>& sol, vector<int> &aux) {
+void resolver(const vector<int>& montes, const vector<vector<int>>& distancias, int etapa, const int& maxDistancia, int& distanciaActual, int& minimaDistancia, vector<int>&sol, vector<int>&aux, const vector<int>& acum) {
     //recorro las ramas
     for (int i = 0; i < montes.size(); i++) {
         sol[etapa] = i;
         int distanciaAux = distancias[etapa][i];
+
         if (distanciaAux <= maxDistancia) { //puedo añadirlo
             distanciaActual += distancias[etapa][i];
             aux[i]--;
@@ -33,7 +35,10 @@ void resolver(const vector<int>& montes, const vector<vector<int>>& distancias, 
                 }
             }
             else {
-                resolver(montes, distancias, etapa + 1, maxDistancia, distanciaActual, minimaDistancia, sol,aux);
+                //estimacion
+                if (distanciaActual + acum[etapa + 1] < minimaDistancia) {
+                    resolver(montes, distancias, etapa + 1, maxDistancia, distanciaActual, minimaDistancia, sol, aux,acum);
+                }
             }
             aux[i]++;
             distanciaActual -= distancias[etapa][i];
@@ -65,10 +70,26 @@ bool resuelveCaso() {
             cin >> distancias[i][j];
         }
     }
+
+    vector<int> minimos(nVigilantes);
+    for (int i = 0; i < nVigilantes; i++) {
+        int minimo = distancias[i][0];
+        for (int j = 0; j < nMontes; j++) {
+            if (distancias[i][j] < minimo) {
+                minimo = distancias[i][j];
+            }
+        }
+        minimos[i] = minimo;
+    }
+    vector<int> acum(nVigilantes);
+    acum[acum.size() - 1] = minimos[minimos.size() - 1];
+    for (int j = minimos.size() - 2; j >= 0; j--) {
+        acum[j] += minimos[j];
+    }
     int minimaDistancia = INT_MAX;
     int distanciaActual = 0;
     vector<int> sol(nVigilantes);
-    resolver(montes, distancias, 0, maxDistancia, distanciaActual, minimaDistancia, sol, aux);
+    resolver(montes, distancias, 0, maxDistancia, distanciaActual, minimaDistancia, sol, aux,acum);
 
     if (minimaDistancia == INT_MAX) cout << "IMPOSIBLE\n";
     else cout << minimaDistancia << endl;

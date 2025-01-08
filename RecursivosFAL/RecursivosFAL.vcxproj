@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="polinomioHermite.cpp" />
+    <ClCompile Include="novita.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="casosAbuelo.txt" />
@@ -27,6 +27,7 @@
     <Text Include="ej2Enero2024.txt" />
     <Text Include="eliminarPares.txt" />
     <Text Include="jugandoDigitos.txt" />
+    <Text Include="novita.txt" />
     <Text Include="numDigitos.txt" />
     <Text Include="numerosCaucasicos.txt" />
     <Text Include="numerosInteresantes.txt" />
